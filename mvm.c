@@ -23,8 +23,7 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
 
     /* Gather entire vector x on each processor */
     /********************************************/
-    //all to all gather mpi 
-    MPI_Allgather(x, nlocal, MPI_DOUBLE, xbuf, nlocal, MPI_DOUBLE, comm);
+    MPI_Alltoall(x,nlocal,MPI_DOUBLE,xbuf,nlocal,MPI_DOUBLE,comm);
     /********************************************/
 
     /* Perform local matrix-vector multiplication */
