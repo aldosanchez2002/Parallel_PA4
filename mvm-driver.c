@@ -52,6 +52,8 @@ if (taskid == 0) {
 
     /* Distribute a and x in 1D row distribution */
     /*********************************************/
+    // MPI scatter params: 
+    // sendbuf, sendcount, sendtype, recvbuf, recvcount, recvtype, root, comm
     MPI_Scatter(a,n*nlocal,MPI_DOUBLE,alocal,n*nlocal,MPI_DOUBLE,0,MPI_COMM_WORLD);
     MPI_Scatter(x,nlocal,MPI_DOUBLE,xlocal,nlocal,MPI_DOUBLE,0,MPI_COMM_WORLD);
     /*********************************************/
@@ -64,7 +66,7 @@ if (taskid == 0) {
 
     /* Gather results back to root process */
     /***************************************/
-    MPI_Gather(ylocal, nlocal, MPI_DOUBLE,y, nlocal, MPI_DOUBLE,0,MPI_COMM_WORLD);
+    MPI_Gather(ylocal, nlocal, MPI_DOUBLE, y, nlocal, MPI_DOUBLE,0,MPI_COMM_WORLD);
     /***************************************/
 
     /* Check results */
