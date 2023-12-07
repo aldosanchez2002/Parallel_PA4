@@ -43,7 +43,7 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
   printf("Process %d X Buffer:\n", myrank);
   for (i = 0; i < n; i++)
   {
-    printf("%f\t", xbuf[i]);
+    printf("%d\t", xbuf[i]);
   }
   printf("\n");
 
