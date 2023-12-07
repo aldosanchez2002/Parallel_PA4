@@ -29,8 +29,7 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
     }
     printf("\n");
   }
-
-  printf("\nLocal X:\n");
+  printf("Local X:\n");
   for (i = 0; i < nlocal; i++)
   {
     printf("%f\t", x[i]);
@@ -42,7 +41,7 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
   /********************************************/
 
   // print x buffer
-  printf("xbuf:\n");
+  printf("Xbuf:\n");
   for (i = 0; i < n; i++)
   {
     printf("%f\t", xbuf[i]);

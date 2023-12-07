@@ -48,7 +48,6 @@ if (taskid == 0) {
     printf("\n");
     x[i] = i;
   }
-  printf("\n");
   printf("Full X:\n");
   for (i = 0;i < n;i++) {
     printf("%f\t", x[i]);
