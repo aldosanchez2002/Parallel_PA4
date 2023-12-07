@@ -43,14 +43,14 @@ if (taskid == 0) {
   for (i = 0;i < n;i++) {
     for (j = 0;j < n; j++){
       a[i*n +j] = 2*i+j;
-      printf("%f\t", a[i*n +j]);
+      printf("%d\t", a[i*n +j]);
     }
     printf("\n");
     x[i] = i;
   }
   printf("Full X:\n");
   for (i = 0;i < n;i++) {
-    printf("%f\t", x[i]);
+    printf("%d\t", x[i]);
   }
   printf("\n\n");
 }
@@ -86,10 +86,10 @@ if (taskid == 0) {
          for (j=0; j<n; j++)
             ycheck[i] += a[i*n+j]*x[j];
          if (ycheck[i] != y[i])
-            printf("discrepancy: ycheck[%d]=%f, y[%d]=%f\n", i, ycheck[i], i, y[i]);
+            printf("discrepancy: ycheck[%d]=%d, y[%d]=%d\n", i, ycheck[i], i, y[i]);
       }
-      printf("Done with mvm, y[%d] = %f\n", n-1, y[n-1]);
-      printf("Parallel matrix vector multiplication time: %f sec\n", end-start);
+      printf("Done with mvm, y[%d] = %d\n", n-1, y[n-1]);
+      printf("Parallel matrix vector multiplication time: %d sec\n", end-start);
     }
 
     MPI_Finalize();

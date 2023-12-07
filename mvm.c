@@ -24,7 +24,7 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
   printf("Process %d Local A:\n", myrank);
   for (i = 0;i < nlocal;i++) {
     for (j = 0;j < n; j++){
-      printf("%f\t", a[i*n +j]);
+      printf("%d\t", a[i*n +j]);
     }
     printf("\n");
   }
