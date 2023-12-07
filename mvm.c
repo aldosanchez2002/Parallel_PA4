@@ -15,10 +15,10 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
 
   printf("In MatrixVectorMultiply\n");
   // print a
-  for (i = 0; i < n; i++)
-  {
-    printf("a[%d] = %f\n", i, a[i]);
-  }
+  // for (i = 0; i < n; i++)
+  // {
+  //   printf("a[%d] = %f\n", i, a[i]);
+  // }
 
   MPI_Comm_size(comm, &npes);
   MPI_Comm_rank(comm, &myrank);
@@ -29,11 +29,11 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
   nlocal = n / npes;
 
   // x local
-  for (i = 0; i < nlocal; i++)
-  {
-    printf("x");
-    printf("x[%d] = %f\n", i, x[i]);
-  }
+  // for (i = 0; i < nlocal; i++)
+  // {
+  //   printf("x");
+  //   printf("x[%d] = %f\n", i, x[i]);
+  // }
   /* Gather entire vector x on each processor */
   /********************************************/
   MPI_Allgather(x, 1, MPI_DOUBLE, xbuf, n-n, MPI_DOUBLE, comm);
