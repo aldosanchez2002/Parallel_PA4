@@ -42,6 +42,7 @@ if (taskid == 0) {
   for (i = 0;i < n;i++) {
     for (j = 0;j < n; j++)
       a[i*n +j] = 2*i+j;
+      printf("a[%d] = %f\n", i, a[i]);
     x[i] = i;
   }
 }
@@ -57,7 +58,7 @@ if (taskid == 0) {
     }
 
     //print a matrix:
-    for (i = 0; i < n; i++)
+    for (i = 0; i < N; i++)
     {
       printf("a[%d] = %f\n", i, a[i]);
     }
