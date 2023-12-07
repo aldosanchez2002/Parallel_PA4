@@ -21,19 +21,19 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
 
   nlocal = n / npes;
 
-  printf("Process %d Local A:\n", myrank);
-  for (i = 0;i < nlocal;i++) {
-    for (j = 0;j < n; j++){
-      printf("%.1f\t", a[i*n +j]);
-    }
-    printf("\n");
-  }
-  printf("Process %d Local X:\n", myrank);
-  for (i = 0; i < nlocal; i++)
-  {
-    printf("%.1f\t", x[i]);
-  }
-  printf("\n");
+  // printf("Process %d Local A:\n", myrank);
+  // for (i = 0;i < nlocal;i++) {
+  //   for (j = 0;j < n; j++){
+  //     printf("%.1f\t", a[i*n +j]);
+  //   }
+  //   printf("\n");
+  // }
+  // printf("Process %d Local X:\n", myrank);
+  // for (i = 0; i < nlocal; i++)
+  // {
+  //   printf("%.1f\t", x[i]);
+  // }
+  // printf("\n");
   /* Gather entire vector x on each processor */
   /********************************************/
   MPI_Allgather(x, nlocal, MPI_DOUBLE, xbuf, nlocal, MPI_DOUBLE, comm);
