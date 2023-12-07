@@ -14,9 +14,16 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
   MPI_Status status;
 
   printf("In MatrixVectorMultiply\n");
+  MPI_Comm_size(comm, &npes);
+  MPI_Comm_rank(comm, &myrank);
+
+  /* Allocate memory for x buffer */
+  xbuf = (double *)malloc(n * sizeof(double));
+
+  nlocal = n / npes;
+
   printf("Local A:\n");
-  printf("Full A:\n");
-  for (i = 0;i < n;i++) {
+  for (i = 0;i < nlocal;i++) {
     for (j = 0;j < n; j++){
       printf("%f\t", a[i*n +j]);
     }
@@ -29,14 +36,6 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
     printf("%f\t", x[i]);
   }
   printf("\n");
-  MPI_Comm_size(comm, &npes);
-  MPI_Comm_rank(comm, &myrank);
-
-  /* Allocate memory for x buffer */
-  xbuf = (double *)malloc(n * sizeof(double));
-
-  nlocal = n / npes;
-
   /* Gather entire vector x on each processor */
   /********************************************/
   MPI_Allgather(x, nlocal, MPI_DOUBLE, xbuf, n, MPI_DOUBLE, comm);
