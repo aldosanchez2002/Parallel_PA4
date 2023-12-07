@@ -67,15 +67,6 @@ if (taskid == 0) {
     // MPI scatter params: 
     // sendbuf, sendcount, sendtype, recvbuf, recvcount, recvtype, root, comm
     MPI_Scatter(a,n*nlocal,MPI_DOUBLE,alocal,n*nlocal,MPI_DOUBLE,0,MPI_COMM_WORLD);
-    for (i = 0; i < n*nlocal; i++)
-    {
-      printf("alocal[%d] = %f\n", i, alocal[i]);
-    }
-    printf("\n");
-    for (i = 0; i < nlocal; i++)
-    {
-      printf("x[%d] = %f\n", i, x[i]);
-    }
     MPI_Scatter(x,nlocal,MPI_DOUBLE,xlocal,nlocal,MPI_DOUBLE,0,MPI_COMM_WORLD);
     /*********************************************/
 
