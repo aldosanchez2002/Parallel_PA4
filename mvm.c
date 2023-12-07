@@ -14,14 +14,15 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
   MPI_Status status;
 
   printf("In MatrixVectorMultiply\n");
+  printf("A:\n")
   for (i = 0; i < n * nlocal; i++)
   {
-    printf("a[%d] = %f\n", i, a[i]);
+    printf("%f",a[i]);
   }
-  printf("\n");
+  printf("\nX:\n");
   for (i = 0; i < nlocal; i++)
   {
-    printf("x[%d] = %f\n", i, x[i]);
+    printf("%f", x[i]);
   }
   MPI_Comm_size(comm, &npes);
   MPI_Comm_rank(comm, &myrank);
@@ -37,9 +38,10 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
   /********************************************/
 
   // print x buffer
+  printf("xbuf:\n");
   for (i = 0; i < n; i++)
   {
-    printf("xbuf[%d] = %f\n", i, xbuf[i]);
+    printf(" %f", xbuf[i]);
   }
 
   /* Perform local matrix-vector multiplication */
