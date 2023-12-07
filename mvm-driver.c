@@ -55,7 +55,7 @@ if (taskid == 0) {
     {
       printf("x[%d] = %f\n", i, x[i]);
     }
-
+  printf("\n");
     //print a matrix:
     for (i = 0; i < N; i++)
     {
