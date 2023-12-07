@@ -13,9 +13,9 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
   int npes, myrank;
   MPI_Status status;
 
-  printf("Process %d MatrixVectorMultiply\n", myrank);
   MPI_Comm_size(comm, &npes);
   MPI_Comm_rank(comm, &myrank);
+  printf("Process %d MatrixVectorMultiply\n", myrank);
 
   /* Allocate memory for x buffer */
   xbuf = (double *)malloc(n * sizeof(double));
