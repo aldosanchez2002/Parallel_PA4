@@ -36,7 +36,7 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
   // }
   /* Gather entire vector x on each processor */
   /********************************************/
-  MPI_Allgather(x, 1, MPI_DOUBLE, xbuf, n-n, MPI_DOUBLE, comm);
+  MPI_Allgather(x, nlocal, MPI_DOUBLE, xbuf, n, MPI_DOUBLE, comm);
   /********************************************/
 
   // print x buffer
