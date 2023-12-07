@@ -50,23 +50,32 @@ if (taskid == 0) {
     xlocal = (double *) malloc(nlocal*sizeof(double));
     ylocal = (double *) malloc(nlocal*sizeof(double));
 
-    //print x vector:
-    for (i = 0; i < n; i++)
-    {
-      printf("x[%d] = %f\n", i, x[i]);
-    }
-  printf("\n");
-    //print a matrix:
-    for (i = 0; i < N; i++)
-    {
-      printf("a[%d] = %f\n", i, a[i]);
-    }
+  //   //print x vector:
+  //   for (i = 0; i < n; i++)
+  //   {
+  //     printf("x[%d] = %f\n", i, x[i]);
+  //   }
+  // printf("\n");
+  //   //print a matrix:
+  //   for (i = 0; i < N; i++)
+  //   {
+  //     printf("a[%d] = %f\n", i, a[i]);
+  //   }
 
     /* Distribute a and x in 1D row distribution */
     /*********************************************/
     // MPI scatter params: 
     // sendbuf, sendcount, sendtype, recvbuf, recvcount, recvtype, root, comm
     MPI_Scatter(a,n*nlocal,MPI_DOUBLE,alocal,n*nlocal,MPI_DOUBLE,0,MPI_COMM_WORLD);
+    for (i = 0; i < n*nlocal; i++)
+    {
+      printf("alocal[%d] = %f\n", i, alocal[i]);
+    }
+    printf("\n");
+    for (i = 0; i < nlocal; i++)
+    {
+      printf("x[%d] = %f\n", i, x[i]);
+    }
     MPI_Scatter(x,nlocal,MPI_DOUBLE,xlocal,nlocal,MPI_DOUBLE,0,MPI_COMM_WORLD);
     /*********************************************/
 
