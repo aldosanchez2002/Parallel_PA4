@@ -14,12 +14,12 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
   MPI_Status status;
 
   printf("In MatrixVectorMultiply\n");
-  printf("A:\n");
+  printf("Process A:\n");
   for (i = 0; i < n * nlocal; i++)
   {
     printf("%f",a[i]);
   }
-  printf("\nX:\n");
+  printf("\n Process X:\n");
   for (i = 0; i < nlocal; i++)
   {
     printf("%f", x[i]);
@@ -41,7 +41,7 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
   printf("xbuf:\n");
   for (i = 0; i < n; i++)
   {
-    printf(" %f", xbuf[i]);
+    printf("%f ", xbuf[i]);
   }
   printf("\n");
 

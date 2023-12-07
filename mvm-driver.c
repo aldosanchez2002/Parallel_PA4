@@ -39,28 +39,25 @@ if (taskid == 0) {
   ycheck = (double *) malloc(n*sizeof(double));
 
   /* Initialize a and x */
+  printf("Full A:\n")
   for (i = 0;i < n;i++) {
-    for (j = 0;j < n; j++)
+    for (j = 0;j < n; j++){
       a[i*n +j] = 2*i+j;
+      printf("%f ", a[i*n +j]);
+    }
+    printf("\n");
     x[i] = i;
+  }
+  printf("\n");
+  printf("Full X:\n");
+  for (i = 0;i < n;i++) {
+    printf("%f ", x[i]);
   }
 }
 
     alocal = (double *) malloc(n*nlocal*sizeof(double));
     xlocal = (double *) malloc(nlocal*sizeof(double));
     ylocal = (double *) malloc(nlocal*sizeof(double));
-
-  //   //print x vector:
-  //   for (i = 0; i < n; i++)
-  //   {
-  //     printf("x[%d] = %f\n", i, x[i]);
-  //   }
-  // printf("\n");
-  //   //print a matrix:
-  //   for (i = 0; i < N; i++)
-  //   {
-  //     printf("a[%d] = %f\n", i, a[i]);
-  //   }
 
     /* Distribute a and x in 1D row distribution */
     /*********************************************/
