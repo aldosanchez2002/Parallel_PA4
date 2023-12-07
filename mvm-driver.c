@@ -53,6 +53,7 @@ if (taskid == 0) {
   for (i = 0;i < n;i++) {
     printf("%f\t", x[i]);
   }
+  printf("\n");
 }
 
     alocal = (double *) malloc(n*nlocal*sizeof(double));
