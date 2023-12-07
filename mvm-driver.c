@@ -50,6 +50,18 @@ if (taskid == 0) {
     xlocal = (double *) malloc(nlocal*sizeof(double));
     ylocal = (double *) malloc(nlocal*sizeof(double));
 
+    //print x vector:
+    for (i = 0; i < n; i++)
+    {
+      printf("x[%d] = %f\n", i, x[i]);
+    }
+
+    //print a matrix:
+    for (i = 0; i < n; i++)
+    {
+      printf("a[%d] = %f\n", i, a[i]);
+    }
+
     /* Distribute a and x in 1D row distribution */
     /*********************************************/
     // MPI scatter params: 
