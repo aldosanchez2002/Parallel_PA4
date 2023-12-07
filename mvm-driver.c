@@ -39,20 +39,20 @@ if (taskid == 0) {
   ycheck = (double *) malloc(n*sizeof(double));
 
   /* Initialize a and x */
-  // printf("Full A:\n");
+  printf("Full A:\n");
   for (i = 0;i < n;i++) {
     for (j = 0;j < n; j++){
       a[i*n +j] = 2*i+j;
-      // printf("%.1f\t", a[i*n +j]);
+      printf("%.1f\t", a[i*n +j]);
     }
-    // printf("\n");
+    printf("\n");
     x[i] = i;
   }
-  // printf("Full X:\n");
-//   for (i = 0;i < n;i++) {
-//     printf("%.1f\t", x[i]);
-//   }
-//   printf("\n\n");
+  printf("Full X:\n");
+  for (i = 0;i < n;i++) {
+    printf("%.1f\t", x[i]);
+  }
+  printf("\n\n");
 }
 
     alocal = (double *) malloc(n*nlocal*sizeof(double));
