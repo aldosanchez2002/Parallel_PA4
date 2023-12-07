@@ -31,7 +31,7 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
   printf("Process %d Local X:\n", myrank);
   for (i = 0; i < nlocal; i++)
   {
-    printf("%f\t", x[i]);
+    printf("%d\t", x[i]);
   }
   printf("\n");
   /* Gather entire vector x on each processor */
