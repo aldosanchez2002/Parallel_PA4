@@ -43,7 +43,7 @@ if (taskid == 0) {
   for (i = 0;i < n;i++) {
     for (j = 0;j < n; j++){
       a[i*n +j] = 2*i+j;
-      printf("%f ", a[i*n +j]);
+      printf("%f\t", a[i*n +j]);
     }
     printf("\n");
     x[i] = i;
@@ -51,7 +51,7 @@ if (taskid == 0) {
   printf("\n");
   printf("Full X:\n");
   for (i = 0;i < n;i++) {
-    printf("%f ", x[i]);
+    printf("%f\t", x[i]);
   }
 }
 
