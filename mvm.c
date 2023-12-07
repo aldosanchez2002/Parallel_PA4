@@ -29,7 +29,7 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
 
   //x local
     for (i=0; i<nlocal; i++) {
-      print("x")
+      print("x");
       printf("x[%d] = %f\n", i, x[i]);
 
     /* Gather entire vector x on each processor */
