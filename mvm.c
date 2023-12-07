@@ -15,7 +15,6 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
 
   MPI_Comm_size(comm, &npes);
   MPI_Comm_rank(comm, &myrank);
-  printf("Process %d MatrixVectorMultiply\n", myrank);
 
   /* Allocate memory for x buffer */
   xbuf = (double *)malloc(n * sizeof(double));
@@ -37,7 +36,7 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
   printf("\n");
   /* Gather entire vector x on each processor */
   /********************************************/
-  MPI_Allgather(x, nlocal, MPI_DOUBLE, xbuf, n, MPI_DOUBLE, comm);
+  MPI_Allgather(x, nlocal, MPI_DOUBLE, xbuf, nlocal, MPI_DOUBLE, comm);
   /********************************************/
 
   // print x buffer
