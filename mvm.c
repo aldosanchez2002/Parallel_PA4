@@ -33,26 +33,25 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
   {
     print("x");
     printf("x[%d] = %f\n", i, x[i]);
-
-    /* Gather entire vector x on each processor */
-    /********************************************/
-    MPI_Alltoall(x, 1, MPI_DOUBLE, xbuf, n, MPI_DOUBLE, comm);
-    /********************************************/
-
-    // print x buffer
-    for (i = 0; i < n; i++)
-    {
-      printf("xbuf[%d] = %f\n", i, xbuf[i]);
-    }
-
-    /* Perform local matrix-vector multiplication */
-    for (i = 0; i < nlocal; i++)
-    {
-      y[i] = 0;
-      for (j = 0; j < n; j++)
-        y[i] += a[i * n + j] * xbuf[j];
-    }
-
-    free(xbuf);
   }
+  /* Gather entire vector x on each processor */
+  /********************************************/
+  MPI_Alltoall(x, 1, MPI_DOUBLE, xbuf, n, MPI_DOUBLE, comm);
+  /********************************************/
+
+  // print x buffer
+  for (i = 0; i < n; i++)
+  {
+    printf("xbuf[%d] = %f\n", i, xbuf[i]);
+  }
+
+  /* Perform local matrix-vector multiplication */
+  for (i = 0; i < nlocal; i++)
+  {
+    y[i] = 0;
+    for (j = 0; j < n; j++)
+      y[i] += a[i * n + j] * xbuf[j];
+  }
+
+  free(xbuf);
 }
