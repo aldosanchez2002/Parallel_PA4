@@ -39,7 +39,7 @@ if (taskid == 0) {
   ycheck = (double *) malloc(n*sizeof(double));
 
   /* Initialize a and x */
-  printf("Full A:\n")
+  printf("Full A:\n");
   for (i = 0;i < n;i++) {
     for (j = 0;j < n; j++){
       a[i*n +j] = 2*i+j;
