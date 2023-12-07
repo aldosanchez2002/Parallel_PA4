@@ -86,7 +86,7 @@ if (taskid == 0) {
          for (j=0; j<n; j++)
             ycheck[i] += a[i*n+j]*x[j];
          if (ycheck[i] != y[i])
-            printf("discrepancy: ycheck[%d]=%d, y[%d]=%d\n", i, ycheck[i], i, y[i]);
+            printf("discrepancy: ycheck[%d]=%f, y[%d]=%f\n", i, ycheck[i], i, y[i]);
       }
       printf("Done with mvm, y[%d] = %d\n", n-1, y[n-1]);
       printf("Parallel matrix vector multiplication time: %d sec\n", end-start);
