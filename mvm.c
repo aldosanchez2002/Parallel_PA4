@@ -43,6 +43,7 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
   {
     printf(" %f", xbuf[i]);
   }
+  printf("\n");
 
   /* Perform local matrix-vector multiplication */
   for (i = 0; i < nlocal; i++)
