@@ -35,4 +35,3 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
  
     free(xbuf);
 } 
-
