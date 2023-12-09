@@ -7,53 +7,32 @@
 
 void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
 {
-  int i, j;
-  int nlocal;   /* Number of locally stored rows of A */
-  double *xbuf; /* Buffer that will store entire vector x */
-  int npes, myrank;
-  MPI_Status status;
+    int i, j;
+    int nlocal;         /* Number of locally stored rows of A */
+    double *xbuf;       /* Buffer that will store entire vector x */
+    int npes, myrank;
+    MPI_Status status;
 
-  MPI_Comm_size(comm, &npes);
-  MPI_Comm_rank(comm, &myrank);
+    MPI_Comm_size(comm, &npes);
+    MPI_Comm_rank(comm, &myrank);
 
-  /* Allocate memory for x buffer */
-  xbuf = (double *)malloc(n * sizeof(double));
+    /* Allocate memory for x buffer */
+    xbuf = (double *) malloc(n*sizeof(double));
+    
+    nlocal = n/npes;
 
-  nlocal = n / npes;
-
-  // printf("Process %d Local A:\n", myrank);
-  // for (i = 0;i < nlocal;i++) {
-  //   for (j = 0;j < n; j++){
-  //     printf("%.1f\t", a[i*n +j]);
-  //   }
-  //   printf("\n");
-  // }
-  // printf("Process %d Local X:\n", myrank);
-  // for (i = 0; i < nlocal; i++)
-  // {
-  //   printf("%.1f\t", x[i]);
-  // }
-  // printf("\n");
-  /* Gather entire vector x on each processor */
-  /********************************************/
+    /* Gather entire vector x on each processor */
+    /********************************************/
   MPI_Allgather(x, nlocal, MPI_DOUBLE, xbuf, nlocal, MPI_DOUBLE, comm);
-  /********************************************/
+    /********************************************/
 
-  // print x buffer
-  printf("Process %d X Buffer:\n", myrank);
-  for (i = 0; i < n; i++)
-  {
-    printf("%.1f\t", xbuf[i]);
-  }
-  printf("\n");
+    /* Perform local matrix-vector multiplication */
+    for (i=0; i<nlocal; i++) {
+      y[i] = 0;
+      for (j=0; j<n; j++)
+         y[i] += a[i*n+j]*xbuf[j];
+    }
+ 
+    free(xbuf);
+} 
 
-  /* Perform local matrix-vector multiplication */
-  for (i = 0; i < nlocal; i++)
-  {
-    y[i] = 0;
-    for (j = 0; j < n; j++)
-      y[i] += a[i * n + j] * xbuf[j];
-  }
-
-  free(xbuf);
-}

@@ -39,20 +39,11 @@ if (taskid == 0) {
   ycheck = (double *) malloc(n*sizeof(double));
 
   /* Initialize a and x */
-  printf("Full A:\n");
   for (i = 0;i < n;i++) {
-    for (j = 0;j < n; j++){
+    for (j = 0;j < n; j++)
       a[i*n +j] = 2*i+j;
-      printf("%.1f\t", a[i*n +j]);
-    }
-    printf("\n");
     x[i] = i;
   }
-  printf("Full X:\n");
-  for (i = 0;i < n;i++) {
-    printf("%.1f\t", x[i]);
-  }
-  printf("\n\n");
 }
 
     alocal = (double *) malloc(n*nlocal*sizeof(double));
@@ -61,8 +52,6 @@ if (taskid == 0) {
 
     /* Distribute a and x in 1D row distribution */
     /*********************************************/
-    // MPI scatter params: 
-    // sendbuf, sendcount, sendtype, recvbuf, recvcount, recvtype, root, comm
     MPI_Scatter(a,n*nlocal,MPI_DOUBLE,alocal,n*nlocal,MPI_DOUBLE,0,MPI_COMM_WORLD);
     MPI_Scatter(x,nlocal,MPI_DOUBLE,xlocal,nlocal,MPI_DOUBLE,0,MPI_COMM_WORLD);
     /*********************************************/
@@ -75,7 +64,7 @@ if (taskid == 0) {
 
     /* Gather results back to root process */
     /***************************************/
-    MPI_Gather(ylocal, nlocal, MPI_DOUBLE, y, nlocal, MPI_DOUBLE,0,MPI_COMM_WORLD);
+    MPI_Gather(ylocal, nlocal, MPI_DOUBLE,y, nlocal, MPI_DOUBLE,0,MPI_COMM_WORLD);
     /***************************************/
 
     /* Check results */
@@ -88,8 +77,8 @@ if (taskid == 0) {
          if (ycheck[i] != y[i])
             printf("discrepancy: ycheck[%d]=%f, y[%d]=%f\n", i, ycheck[i], i, y[i]);
       }
-      printf("Done with mvm, y[%d] = %d\n", n-1, y[n-1]);
-      printf("Parallel matrix vector multiplication time: %d sec\n", end-start);
+      printf("Done with mvm, y[%d] = %f\n", n-1, y[n-1]);
+      printf("Parallel matrix vector multiplication time: %f sec\n", end-start);
     }
 
     MPI_Finalize();
