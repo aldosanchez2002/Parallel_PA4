@@ -40,12 +40,12 @@ void MatrixVectorMultiply(int n, double *a, double *x, double *y, MPI_Comm comm)
   /********************************************/
 
   // print x buffer
-  printf("Process %d X Buffer:\n", myrank);
-  for (i = 0; i < n; i++)
-  {
-    printf("%.1f\t", xbuf[i]);
-  }
-  printf("\n");
+  //printf("Process %d X Buffer:\n", myrank);
+  //for (i = 0; i < n; i++)
+  //{
+   // printf("%.1f\t", xbuf[i]);
+  //}
+  //printf("\n");
 
   /* Perform local matrix-vector multiplication */
   for (i = 0; i < nlocal; i++)
